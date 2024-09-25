@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MAUIPerf.ViewModels"
+             xmlns:model="clr-namespace:MAUIPerf.Models"
+             x:DataType="vm:CollectionView2ViewModel"
+             x:Class="MAUIPerf.CollectionView2Page">
+
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Frame Margin="30, 0, 30, 0" Padding="0"
+           AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" AbsoluteLayout.LayoutBounds="0,0.99,1,50">
+            <!--<controls:CustomTabBar HorizontalOptions="FillAndExpand" HeightRequest="50" BackgroundColor="{StaticResource Gray600}"></controls:CustomTabBar>-->
+
+            <!--<controls:CustomTabBarXAML></controls:CustomTabBarXAML>-->
+
+        </Frame>
+
+        <StackLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,0.95">
+            <Frame 
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"
+               BorderColor="Transparent"
+               ZIndex="1" 
+               Padding="0"
+               CornerRadius="45"
+               Margin="-1,5,-1,5" 
+                BackgroundColor="Green">
+
+
+                <StackLayout>
+                    <CollectionView ItemsSource="{Binding Items}" BackgroundColor="Red" VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:CollectionView2Model">
+
+                <!--not everything in this template might make sense since some of the logic is just replaced with static content
+                    also some converters were removed but there is no noticeable difference-->
+
+                                <Border StrokeShape="RoundRectangle 20" Padding="0" Margin="30,5,30,5" BackgroundColor="{StaticResource Primary}">
+                                    <Grid>
+
+                                        <Grid Margin="20" RowDefinitions="40, 37, 15">
+                                            <Grid Grid.Row="0" ColumnDefinitions="*,30" RowDefinitions="22, 18">
+                                                <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand" Text="{Binding ItemNumber}"/>
+                                                <Label Grid.Column="0" Grid.Row="1" Margin="0,0,0,1" FontSize="12" Text="{Binding ItemNumber}" />
+                                                <Image Grid.Column="1" Grid.RowSpan="2" WidthRequest="20" Source="dotnet_bot.png"
+                                       IsVisible="{Binding IsEditingEnabled,Source={RelativeSource AncestorType={x:Type vm:CollectionView2ViewModel}}}"></Image>
+                                            </Grid>
+
+                                            <StackLayout Grid.Row="1" Orientation="Horizontal" Spacing="5" Margin="0,3,0,0" HeightRequest="37">
+                                                <Label FontSize="12" Text="some string from localization" />
+                                                <Border Margin="3,3,5,3" Padding="6" BackgroundColor="{Binding BackgroundColor}"
+                                        StrokeShape="RoundRectangle 90">
+                                                    <Label FontSize="12" Text="0.0" />
+                                                </Border>
+                                                <Label FontSize="12" Text="description"/>
+                                            </StackLayout>
+
+                                            <Label Grid.Row="2" FontSize="10" Text="date"/>
+                                        </Grid>
+
+                                        <Button BackgroundColor="Transparent"></Button>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+            </Frame>
+        </StackLayout>
+    </AbsoluteLayout>
+
+</ContentPage>

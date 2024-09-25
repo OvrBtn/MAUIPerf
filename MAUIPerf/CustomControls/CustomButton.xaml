@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="MAUIPerf.CustomButton"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:MAUIPerf.Converters"
+    xmlns:model="clr-namespace:MAUIPerf.Models"
+    xmlns:strings="clr-namespace:MAUIPerf.Resources.LocalizedStrings"
+    xmlns:vm="clr-namespace:MAUIPerf.ViewModels"
+    x:Name="self"
+    x:DataType="vm:CollectionView1ViewModel"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="FillAndExpand">
+
+    <ContentView.ControlTemplate>
+        <ControlTemplate>
+            <Border
+                Margin="0"
+                Padding="0"
+                BackgroundColor="{Binding Source={x:Reference self}, Path=BackgroundColor}"
+                Shadow="{Binding Source={x:Reference self}, Path=Shadow}"
+                StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="{Binding Source={x:Reference self}, Path=CornerRadius}" />
+                </Border.StrokeShape>
+                <Grid>
+                    <ContentPresenter HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                    <Button
+                        BackgroundColor="Transparent"
+                        Clicked="Button_Clicked"
+                        CornerRadius="{Binding Source={x:Reference self}, Path=CornerRadius}" />
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </ContentView.ControlTemplate>
+
+</ContentView>

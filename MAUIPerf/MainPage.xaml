@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIPerf.MainPage">
+
+    <StackLayout Margin="30" Spacing="10">
+        <Button Text="CollectionView1 - trying to get laggy scroll" Clicked="Button_Clicked"></Button>
+        <!--<Button Text="CollectionView2 - laggy scroll" Clicked="Button_Clicked_1"></Button>-->
+        <Button Text="SimpleCollectionView1 - slow first render" Clicked="Button_Clicked_2"></Button>
+        <Button Text="SimpleCollectionView2 - slow first render" Clicked="Button_Clicked_3"></Button>
+        <Button Text="Static1 - slow first render" Clicked="Button_Clicked_4"></Button>
+        <Button Text="Static2 - slow first render" Clicked="Button_Clicked_5"></Button>
+    </StackLayout> 
+
+</ContentPage>
